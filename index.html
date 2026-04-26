@@ -215,241 +215,422 @@
           <div class="promo-track"><span>🚚 WhatsApp Direct Orders</span><span class="sep">•</span><span>⭐ Premium
               Quality</span><span class="sep">•</span><span>🔒 Secure Transactions</span><span
               class="sep">•</span><span>💬 24/7 WhatsApp Support</span><span class="sep">•</span><span>🚚 WhatsApp
-              Direct Orders</span><span class="sep">•</span><span>⭐ Premium Quality</span></div>
+              Direct Orders</span><span class="sep">•</span><span>⭐ Premium Quality</span><span
+              class="sep">•</span><span>🔒 Secure Transactions</span><span class="sep">•</span><span>💬 24/7
+              Support</span></div>
         </div>
 
-        <!-- FEATURED PRODUCTS -->
-        <section class="section">
+        <!-- CATEGORIES -->
+        <section class="home-section">
           <div class="section-header">
-            <h2>Featured Collections</h2>
-            <p>Handpicked selections for you</p>
+            <h2 class="section-title">Shop by <em>Category</em></h2>
+            <div class="gold-line"></div>
+          </div>
+          <div class="categories-showcase" id="categoriesGrid"></div>
+        </section>
+
+        <!-- FEATURED -->
+        <section class="home-section">
+          <div class="section-header">
+            <h2 class="section-title">Featured <em>Products</em></h2>
+            <div class="gold-line"></div><a class="see-all" onclick="goToAllProducts()">See All →</a>
           </div>
           <div class="products-grid" id="featuredProducts"></div>
         </section>
 
         <!-- FLASH SALE -->
-        <section class="section flash-sale-section" id="flashSaleSection">
-          <div class="section-header">
-            <h2>⚡ Flash Sale</h2>
-            <div class="flash-timer" id="flashTimer">Ends in: <span id="timerDisplay">00:00:00</span></div>
+        <section class="home-section" id="flashSaleSection">
+          <div class="flash-banner">
+            <div class="flash-left">
+              <h2>⚡ Flash Sale</h2>
+              <p>Grab them before they're gone!</p>
+            </div>
+            <div class="flash-timer">
+              <div class="timer-box"><span id="timerHours">02</span><small>HRS</small></div>
+              <div class="timer-sep">:</div>
+              <div class="timer-box"><span id="timerMins">45</span><small>MIN</small></div>
+              <div class="timer-sep">:</div>
+              <div class="timer-box"><span id="timerSecs">00</span><small>SEC</small></div>
+            </div>
           </div>
           <div class="products-grid" id="flashSaleProducts"></div>
         </section>
 
-        <!-- HOT DEALS -->
-        <section class="section">
+        <!-- TRENDING -->
+        <section class="home-section">
           <div class="section-header">
-            <h2>🔥 Hot Deals</h2>
-            <p>Limited time offers</p>
+            <h2 class="section-title">Trending <em>Now</em></h2>
+            <div class="gold-line"></div><a class="see-all" onclick="goToAllProducts()">See All →</a>
           </div>
-          <div class="products-grid" id="hotDealsProducts"></div>
+          <div class="products-grid" id="trendingProducts"></div>
         </section>
 
-        <!-- NEW ARRIVALS -->
-        <section class="section">
+        <!-- WHY US -->
+        <section class="home-section why-section">
           <div class="section-header">
-            <h2>✨ New Arrivals</h2>
-            <p>Latest products just added</p>
+            <h2 class="section-title">Why Choose <em>T SHOP</em></h2>
+            <div class="gold-line"></div>
           </div>
-          <div class="products-grid" id="newArrivalsProducts"></div>
-        </section>
-
-        <!-- CTA SECTION -->
-        <section class="cta-section">
-          <div class="cta-content">
-            <h2>Join Our Luxury Community</h2>
-            <p>Get exclusive deals, early access to sales, and VIP offers</p>
-            <div class="newsletter-form">
-              <input type="email" placeholder="Enter your email" id="newsletterEmail">
-              <button class="btn-gold" onclick="subscribeNewsletter()">Subscribe</button>
+          <div class="why-grid">
+            <div class="why-card">
+              <div class="why-icon">💬</div>
+              <h3>WhatsApp Orders</h3>
+              <p>Order directly via WhatsApp for instant, personal service.</p>
+            </div>
+            <div class="why-card">
+              <div class="why-icon">✅</div>
+              <h3>Verified Quality</h3>
+              <p>Every product is curated and verified before listing.</p>
+            </div>
+            <div class="why-card">
+              <div class="why-icon">🚚</div>
+              <h3>Fast Delivery</h3>
+              <p>Nationwide delivery with real-time tracking and updates.</p>
+            </div>
+            <div class="why-card">
+              <div class="why-icon">🔒</div>
+              <h3>Secure & Safe</h3>
+              <p>Your orders and personal data are always protected.</p>
             </div>
           </div>
         </section>
       </section>
 
-      <!-- ALL PRODUCTS PAGE -->
-      <section class="page" id="allProductsPage" style="display:none">
-        <div class="page-header">
-          <h1>All Products</h1>
-          <p>Explore our complete luxury collection</p>
+      <!-- PRODUCTS PAGE -->
+      <section class="page" id="productsPage" style="display:none">
+        <div class="page-header-bar">
+          <h2 id="pageTitle">All Products</h2>
+          <div class="sort-wrap"><label>Sort:</label><select id="sortSelect" onchange="sortProducts()">
+              <option value="newest">Newest</option>
+              <option value="price-low">Price: Low → High</option>
+              <option value="price-high">Price: High → Low</option>
+              <option value="rating">Top Rated</option>
+              <option value="popular">Most Popular</option>
+            </select></div>
         </div>
-        <div class="sort-controls">
-          <select id="sortSelect" onchange="sortProducts()">
-            <option value="featured">Featured</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="rating">Highest Rated</option>
-            <option value="newest">Newest First</option>
-          </select>
-        </div>
-        <div class="products-grid" id="allProductsGrid"></div>
+        <div class="products-grid" id="productsGrid"></div>
       </section>
 
       <!-- PRODUCT DETAIL PAGE -->
       <section class="page" id="productDetailPage" style="display:none">
-        <div class="product-detail-container" id="productDetailContainer"></div>
-      </section>
-
-      <!-- WISHLIST PAGE -->
-      <section class="page" id="wishlistPage" style="display:none">
-        <div class="page-header">
-          <h1>My Wishlist</h1>
-          <p>Your saved items</p>
+        <div class="breadcrumb"><span onclick="goHome()">Home</span> / <span id="breadcrumbCat">Category</span> / <span
+            id="breadcrumbProduct">Product</span></div>
+        <div class="product-detail-wrap">
+          <div class="product-images-col">
+            <div class="main-img-box"><img id="mainImage" src="" alt="Product"></div>
+            <div class="thumbnail-strip" id="thumbnailImages"></div>
+          </div>
+          <div class="product-info-col">
+            <div class="prod-badges" id="productBadgesRow"></div>
+            <h1 class="product-title" id="productName"></h1>
+            <div class="prod-meta">
+              <div class="stars-display" id="productStars"></div><span class="review-count" id="ratingCount"></span>
+            </div>
+            <div class="price-block"><span class="detail-price" id="currentPrice"></span><span class="detail-original"
+                id="originalPrice"></span><span class="detail-discount" id="discount"></span></div>
+            <div class="avail-row"><span class="in-stock">✓ In Stock</span><span class="seller-chip">Sold by: <strong
+                  id="sellerName"></strong></span></div>
+            <div class="prod-desc">
+              <p id="productDescription"></p>
+            </div>
+            <div class="prod-specs">
+              <h4>Specifications</h4>
+              <ul id="productSpecs"></ul>
+            </div>
+            <div class="qty-row"><label>Quantity:</label>
+              <div class="qty-ctrl"><button onclick="decreaseQuantity()">−</button><input type="number" id="quantity"
+                  value="1" min="1" max="99"><button onclick="increaseQuantity()">+</button></div>
+            </div>
+            <div class="detail-actions">
+              <button class="btn-gold btn-wa" onclick="buyNowWhatsApp()"><svg width="18" height="18" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg> Order via WhatsApp</button>
+              <button class="btn-outline btn-cart-detail" onclick="addToCartFromDetail()">🛒 Add to Cart</button>
+              <button class="btn-wl-detail" id="wishlistDetailBtn" onclick="toggleProductWishlist()">♡</button>
+            </div>
+            <div class="seller-card">
+              <h4>Seller Info</h4>
+              <div class="seller-row"><span>⭐ <strong id="sellerRating"></strong></span><span>⚡ Response: <strong
+                    id="responseTime"></strong></span></div>
+            </div>
+          </div>
         </div>
-        <div class="products-grid" id="wishlistGrid"></div>
-        <div class="empty-state" id="emptyWishlist" style="display:none">
-          <p>Your wishlist is empty</p>
-          <button class="btn-gold" onclick="goToAllProducts()">Continue Shopping</button>
+
+        <!-- REVIEWS -->
+        <div class="reviews-wrap">
+          <h2 class="section-title">Customer <em>Reviews</em></h2>
+          <div class="reviews-layout">
+            <div class="reviews-score-box">
+              <div class="big-avg" id="averageRating">4.5</div>
+              <div class="avg-stars-disp">⭐⭐⭐⭐⭐</div>
+              <p style="color:var(--gold-mid);font-size:13px">out of 5</p>
+              <div class="rating-bars">
+                <div class="rb-row"><span>5⭐</span>
+                  <div class="rb-bar">
+                    <div class="rb-fill" style="width:60%"></div>
+                  </div><span>60%</span>
+                </div>
+                <div class="rb-row"><span>4⭐</span>
+                  <div class="rb-bar">
+                    <div class="rb-fill" style="width:25%"></div>
+                  </div><span>25%</span>
+                </div>
+                <div class="rb-row"><span>3⭐</span>
+                  <div class="rb-bar">
+                    <div class="rb-fill" style="width:10%"></div>
+                  </div><span>10%</span>
+                </div>
+                <div class="rb-row"><span>2⭐</span>
+                  <div class="rb-bar">
+                    <div class="rb-fill" style="width:3%"></div>
+                  </div><span>3%</span>
+                </div>
+                <div class="rb-row"><span>1⭐</span>
+                  <div class="rb-bar">
+                    <div class="rb-fill" style="width:2%"></div>
+                  </div><span>2%</span>
+                </div>
+              </div>
+            </div>
+            <div class="reviews-col">
+              <div class="write-review-box">
+                <h3>Write a Review</h3>
+                <div class="star-picker" id="starPicker"><span class="sp-star"
+                    onclick="setReviewRating(1)">★</span><span class="sp-star"
+                    onclick="setReviewRating(2)">★</span><span class="sp-star"
+                    onclick="setReviewRating(3)">★</span><span class="sp-star"
+                    onclick="setReviewRating(4)">★</span><span class="sp-star" onclick="setReviewRating(5)">★</span>
+                </div>
+                <textarea id="reviewText" placeholder="Share your experience..." maxlength="500"></textarea>
+                <button class="btn-gold" onclick="submitReview()">Submit Review</button>
+              </div>
+              <div class="reviews-list" id="reviewsList"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RELATED -->
+        <div class="home-section">
+          <div class="section-header">
+            <h2 class="section-title">You May Also <em>Like</em></h2>
+            <div class="gold-line"></div>
+          </div>
+          <div class="products-grid" id="relatedProducts"></div>
         </div>
       </section>
 
       <!-- CART PAGE -->
       <section class="page" id="cartPage" style="display:none">
-        <div class="page-header">
-          <h1>Shopping Cart</h1>
-        </div>
-        <div class="cart-container">
-          <div class="cart-items" id="cartItems"></div>
-          <div class="cart-summary">
+        <h2 class="page-title">Shopping <em>Cart</em></h2>
+        <div class="cart-layout">
+          <div class="cart-items-col" id="cartItems"></div>
+          <div class="cart-summary-col">
             <h3>Order Summary</h3>
-            <div class="summary-row">
-              <span>Subtotal:</span>
-              <span id="subtotal">$0.00</span>
-            </div>
-            <div class="summary-row">
-              <span>Shipping:</span>
-              <span id="shipping">$0.00</span>
-            </div>
-            <div class="summary-row">
-              <span>Tax:</span>
-              <span id="tax">$0.00</span>
-            </div>
-            <div class="summary-row total">
-              <span>Total:</span>
-              <span id="total">$0.00</span>
-            </div>
-            <button class="btn-gold" onclick="proceedToCheckout()" style="width:100%; margin-top:20px">Proceed to
-              Checkout</button>
+            <div class="sum-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+            <div class="sum-row"><span>Shipping</span><span id="shipping">$0.00</span></div>
+            <div class="sum-row"><span>Tax (10%)</span><span id="tax">$0.00</span></div>
+            <div class="sum-row total-row"><span>Total</span><span id="total">$0.00</span></div>
+            <button class="btn-gold full-w" onclick="orderCartWhatsApp()"><svg width="18" height="18"
+                viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg> Order via WhatsApp</button>
+            <button class="btn-outline full-w" onclick="continueShopping()">Continue Shopping</button>
           </div>
-        </div>
-        <div class="empty-state" id="emptyCart" style="display:none">
-          <p>Your cart is empty</p>
-          <button class="btn-gold" onclick="goToAllProducts()">Continue Shopping</button>
         </div>
       </section>
 
-      <!-- CHECKOUT PAGE -->
-      <section class="page" id="checkoutPage" style="display:none">
-        <div class="page-header">
-          <h1>Checkout</h1>
-        </div>
-        <div class="checkout-container">
-          <form id="checkoutForm" onsubmit="completeOrder(event)">
-            <div class="form-section">
-              <h3>Shipping Address</h3>
-              <div class="form-row">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email" required>
-              </div>
-              <div class="form-row">
-                <input type="text" placeholder="Address" required>
-                <input type="text" placeholder="City" required>
-              </div>
-              <div class="form-row">
-                <input type="text" placeholder="State" required>
-                <input type="text" placeholder="ZIP Code" required>
-              </div>
-            </div>
-            <div class="form-section">
-              <h3>Payment Method</h3>
-              <div class="payment-options">
-                <label><input type="radio" name="payment" value="card" checked> Credit/Debit Card</label>
-                <label><input type="radio" name="payment" value="paypal"> PayPal</label>
-                <label><input type="radio" name="payment" value="whatsapp"> WhatsApp Pay</label>
-              </div>
-            </div>
-            <button type="submit" class="btn-gold" style="width:100%; margin-top:20px">Complete Order</button>
-          </form>
-        </div>
+      <!-- WISHLIST PAGE -->
+      <section class="page" id="wishlistPage" style="display:none">
+        <h2 class="page-title">My <em>Wishlist</em></h2>
+        <div class="products-grid" id="wishlistProducts"></div>
       </section>
 
       <!-- PROFILE PAGE -->
       <section class="page" id="profilePage" style="display:none">
-        <div class="page-header">
-          <h1>My Profile</h1>
-        </div>
-        <div class="profile-container">
-          <div class="profile-info" id="profileInfo"></div>
+        <h2 class="page-title">My <em>Profile</em></h2>
+        <div class="profile-layout">
+          <div class="profile-sidebar-card">
+            <div class="profile-avatar-wrap">
+              <div class="profile-avatar-big" id="profileAvatarBig">T</div>
+            </div>
+            <h3 id="profileName"></h3>
+            <p id="profileEmailDisplay"></p>
+            <nav class="profile-nav">
+              <button class="pnav active" onclick="showProfileTab('info',this)">👤 Personal Info</button>
+              <button class="pnav" onclick="showProfileTab('addresses',this)">📍 Addresses</button>
+              <button class="pnav" onclick="showProfileTab('preferences',this)">⚙️ Preferences</button>
+            </nav>
+          </div>
+          <div class="profile-content-card">
+            <div class="ptab" id="infoTab">
+              <h3>Personal Information</h3>
+              <div class="form-row"><input type="text" placeholder="First Name" id="firstName"><input type="text"
+                  placeholder="Last Name" id="lastName"></div>
+              <div class="form-row"><input type="email" placeholder="Email" id="profileEmailInput"><input type="tel"
+                  placeholder="Phone" id="profilePhone"></div>
+              <textarea placeholder="Bio" id="profileBio" rows="3"></textarea>
+              <button class="btn-gold" onclick="saveProfile()">Save Changes</button>
+            </div>
+            <div class="ptab" id="addressesTab" style="display:none">
+              <h3>Saved Addresses</h3>
+              <p class="empty-msg">No saved addresses yet.</p><button class="btn-gold"
+                onclick="showToast('Coming soon!','info')">+ Add New Address</button>
+            </div>
+            <div class="ptab" id="preferencesTab" style="display:none">
+              <h3>Preferences</h3>
+              <label class="toggle-label"><input type="checkbox" id="emailNotifications" checked><span
+                  class="toggle-sw"></span> Email notifications</label>
+              <label class="toggle-label"><input type="checkbox" id="smsNotifications"><span class="toggle-sw"></span>
+                SMS notifications</label>
+              <label class="toggle-label"><input type="checkbox" id="marketingEmails"><span class="toggle-sw"></span>
+                Promotional emails</label>
+              <button class="btn-gold" onclick="showToast('Preferences saved!','success')">Save</button>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- ORDERS PAGE -->
       <section class="page" id="ordersPage" style="display:none">
-        <div class="page-header">
-          <h1>My Orders</h1>
-        </div>
-        <div class="orders-container" id="ordersContainer"></div>
+        <h2 class="page-title">My <em>Orders</em></h2>
+        <div class="orders-list" id="ordersList"></div>
       </section>
+
+      <!-- SEARCH PAGE -->
+      <section class="page" id="searchPage" style="display:none">
+        <h2 class="page-title" id="searchTitle">Search Results</h2>
+        <div class="search-filter-bar"><label>Category:</label><select id="searchCategoryFilter"
+            onchange="filterSearchResults()">
+            <option value="">All</option>
+          </select></div>
+        <div class="products-grid" id="searchResults"></div>
+      </section>
+
     </main>
   </div>
 
   <!-- MODALS -->
-  <div class="modal-overlay" id="modalOverlay" onclick="closeAllModals()"></div>
-
-  <!-- LOGIN MODAL -->
-  <div class="modal" id="loginModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeAllModals()">✕</button>
-      <h2>Sign In</h2>
+  <!-- LOGIN -->
+  <div class="modal" id="loginModal" onclick="closeModalOutside(event,'loginModal')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeLoginModal()">✕</button>
+      <div class="modal-logo-mark">T</div>
+      <h2 class="modal-title">Welcome <em>Back</em></h2>
+      <p class="modal-sub">Sign in to your luxury account</p>
       <form onsubmit="handleLogin(event)">
-        <input type="email" placeholder="Email" id="loginEmail" required>
-        <input type="password" placeholder="Password" id="loginPassword" required>
-        <button type="submit" class="btn-gold">Sign In</button>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"
+            id="loginEmail" required></div>
+        <div class="form-group"><label>Password</label>
+          <div class="pass-wrap"><input type="password" placeholder="••••••••" id="loginPassword" required><button
+              type="button" class="show-pass" onclick="togglePass('loginPassword',this)">👁</button></div>
+        </div>
+        <button type="submit" class="btn-gold full-w">Sign In</button>
       </form>
-      <p>Don't have an account? <a onclick="openSignupModal()">Sign Up</a></p>
+      <div class="modal-divider"><span>or</span></div>
+      <p class="modal-switch">No account? <a onclick="switchToSignup()">Create one →</a></p>
     </div>
   </div>
 
-  <!-- SIGNUP MODAL -->
-  <div class="modal" id="signupModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeAllModals()">✕</button>
-      <h2>Create Account</h2>
+  <!-- SIGNUP -->
+  <div class="modal" id="signupModal" onclick="closeModalOutside(event,'signupModal')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeSignupModal()">✕</button>
+      <div class="modal-logo-mark">T</div>
+      <h2 class="modal-title">Join <em>T SHOP</em></h2>
+      <p class="modal-sub">Create your luxury shopping account</p>
       <form onsubmit="handleSignup(event)">
-        <input type="text" placeholder="Full Name" id="signupName" required>
-        <input type="email" placeholder="Email" id="signupEmail" required>
-        <input type="password" placeholder="Password" id="signupPassword" required>
-        <input type="password" placeholder="Confirm Password" id="signupConfirm" required>
-        <button type="submit" class="btn-gold">Create Account</button>
+        <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name" id="signupName"
+            required></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"
+            id="signupEmail" required></div>
+        <div class="form-group"><label>Password</label>
+          <div class="pass-wrap"><input type="password" placeholder="Min. 6 characters" id="signupPassword" required
+              oninput="checkPasswordStrength(this.value)"><button type="button" class="show-pass"
+              onclick="togglePass('signupPassword',this)">👁</button></div>
+          <div class="pw-strength" id="pwStrength"></div>
+        </div>
+        <div class="form-group"><label>Confirm Password</label>
+          <div class="pass-wrap"><input type="password" placeholder="Repeat password" id="signupConfirmPassword"
+              required><button type="button" class="show-pass"
+              onclick="togglePass('signupConfirmPassword',this)">👁</button></div>
+        </div>
+        <button type="submit" class="btn-gold full-w">Create Account</button>
       </form>
-      <p>Already have an account? <a onclick="openLoginModal()">Sign In</a></p>
+      <p class="modal-switch">Have an account? <a onclick="switchToLogin()">Sign in →</a></p>
     </div>
   </div>
 
-  <!-- PRODUCT MODAL -->
-  <div class="modal" id="productModal">
-    <div class="modal-content product-modal-content">
-      <button class="modal-close" onclick="closeAllModals()">✕</button>
-      <div class="product-modal-body" id="productModalBody"></div>
+  <!-- SUCCESS MODAL -->
+  <div class="modal" id="successModal">
+    <div class="modal-box text-center">
+      <div class="success-icon">✓</div>
+      <h2 style="color:var(--gold)">Order Sent! 🎉</h2>
+      <p id="successMsg" style="color:var(--text-muted)">Your order has been sent to WhatsApp.</p>
+      <p style="color:var(--text-muted)">Order: <strong id="orderNumber" style="color:var(--gold)"></strong></p>
+      <button class="btn-gold full-w" onclick="goToOrders();closeModal('successModal')">View My Orders</button>
+      <button class="btn-outline full-w" onclick="continueShopping();closeModal('successModal')"
+        style="margin-top:10px">Continue Shopping</button>
     </div>
   </div>
 
-  <!-- CART SIDEBAR -->
-  <div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-sidebar-header">
-      <h3>Shopping Cart</h3>
-      <button class="close-btn" onclick="toggleCart()">✕</button>
-    </div>
-    <div class="cart-sidebar-items" id="cartSidebarItems"></div>
-    <div class="cart-sidebar-footer">
-      <div class="cart-total">
-        <span>Total:</span>
-        <span id="cartSidebarTotal">$0.00</span>
+  <!-- PRODUCT CLICK RIPPLE -->
+  <div class="click-ripple" id="clickRipple"></div>
+
+  <!-- WA FLOAT -->
+  <a class="wa-float" href="https://wa.me/2348053950665" target="_blank" title="Chat on WhatsApp"><svg width="26"
+      height="26" viewBox="0 0 24 24" fill="white">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg></a>
+
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2 class="footer-logo">T <span>SHOP</span></h2>
+        <p>Your premium shopping destination. Order anything via WhatsApp and get it delivered fast.</p>
+        <div class="footer-social"><a href="https://wa.me/2348053950665" target="_blank"
+            class="social-link wa-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg></a></div>
       </div>
-      <button class="btn-gold" onclick="goToCart()">View Cart</button>
-      <button class="btn-outline" onclick="toggleCart()">Continue Shopping</button>
+      <div class="footer-links-group">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a onclick="goHome()">Home</a></li>
+          <li><a onclick="goToAllProducts()">All Products</a></li>
+          <li><a onclick="filterByCategory('Electronics')">Electronics</a></li>
+          <li><a onclick="filterByCategory('Fashion')">Fashion</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-group">
+        <h4>Customer Service</h4>
+        <ul>
+          <li><a href="https://wa.me/2348053950665" target="_blank">WhatsApp Support</a></li>
+          <li><a onclick="goToOrders()">Track Order</a></li>
+          <li><a onclick="showToast('Returns policy coming soon','info')">Returns Policy</a></li>
+          <li><a onclick="showToast('Shipping info coming soon','info')">Shipping Info</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-group">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://wa.me/2348053950665" target="_blank">📱 +234 805 395 0665</a></li>
+        </ul>
+        <div class="trust-badges"><span>🔒 Secure</span><span>✅ Verified</span><span>🚚 Fast</span></div>
+      </div>
     </div>
-  </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 T SHOP. All rights reserved. Made with ❤️ in Nigeria</p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
