@@ -1289,16 +1289,37 @@ textarea {
   color: var(--gold);
 }
 
-/* ===== PRODUCTS GRID ===== */
+/* ===================================================
+   PRODUCTS GRID — Jumia-style horizontal scroll shelf
+   Shows 4-5 cards desktop | 3 tablet | 2 mobile | 1.5 small
+   Horizontal scroll kicks in when cards exceed viewport
+   =================================================== */
 .products-grid {
-  display: grid;
-  /* FIX: fluid column sizing, no overflow at any viewport */
-  grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 28vw, 280px), 1fr));
-  gap: clamp(14px, 2.5vw, 24px);
+  display: flex;
+  flex-direction: row;
+  gap: clamp(10px, 2vw, 16px);
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* small bottom padding so box-shadow on hover isn't clipped */
+  padding-bottom: 16px;
+  /* pull back the overflow clip from parent */
+  margin-bottom: -4px;
+}
+
+.products-grid::-webkit-scrollbar {
+  display: none;
 }
 
 /* ===== PRODUCT CARD ===== */
 .product-card {
+  /* Desktop: ~5 cards visible (calc leaves small gap) */
+  flex: 0 0 calc(20% - 14px);
+  min-width: 180px;
+  max-width: 220px;
+  scroll-snap-align: start;
   background: var(--dark-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -1306,13 +1327,11 @@ textarea {
   cursor: pointer;
   transition: var(--trans);
   position: relative;
-  /* FIX: allow cards to shrink properly */
-  min-width: 0;
 }
 
 .product-card:hover {
-  transform: translateY(-10px) rotateX(2deg);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(201, 168, 76, 0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(201, 168, 76, 0.1);
   border-color: var(--border-bright);
 }
 
@@ -1320,14 +1339,15 @@ textarea {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.4));
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.35));
   pointer-events: none;
 }
 
+/* ===== PRODUCT IMAGE ===== */
 .product-img-wrap {
   width: 100%;
-  /* FIX: aspect-ratio instead of fixed height — scales with card */
-  aspect-ratio: 4/3;
+  /* Smaller square-ish image — like Jumia */
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   position: relative;
   background: var(--dark-3);
@@ -1337,27 +1357,28 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.5s ease;
 }
 
 .product-card:hover .product-img-wrap img {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
+/* ===== BADGES ===== */
 .product-badge-wrap {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 8px;
+  left: 8px;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .p-badge {
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: 20px;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -1377,20 +1398,21 @@ textarea {
   color: #fff;
 }
 
+/* ===== WISHLIST BUTTON ===== */
 .product-wl-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   z-index: 3;
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   background: rgba(10, 10, 10, 0.8);
   border: 1px solid var(--border);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 12px;
   transition: var(--trans-fast);
   color: var(--text-muted);
   backdrop-filter: blur(4px);
@@ -1403,78 +1425,85 @@ textarea {
   color: var(--gold);
 }
 
+/* ===== CARD INFO AREA ===== */
 .product-info {
-  padding: clamp(10px, 2vw, 16px);
+  padding: 10px;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .product-name {
-  font-size: clamp(12px, 1.5vw, 14px);
+  font-size: 12px;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 4px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-height: 1.4;
+  margin: 0;
 }
 
 .product-cat-tag {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-faint);
-  margin-bottom: 8px;
   letter-spacing: 0.5px;
+  margin: 0;
 }
 
 .product-stars-row {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-bottom: 8px;
-  font-size: 12px;
+  gap: 4px;
+  font-size: 10px;
   color: var(--text-muted);
+  margin: 0;
 }
 
 .product-stars-row .s-stars {
   color: var(--gold);
-  letter-spacing: 1px;
+  font-size: 10px;
+  letter-spacing: 0.5px;
 }
 
 .product-price-row {
   display: flex;
   align-items: baseline;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 6px;
   flex-wrap: wrap;
+  margin: 2px 0;
 }
 
 .pc-price {
-  font-size: clamp(14px, 2.5vw, 18px);
+  font-size: 14px;
   font-weight: 800;
   color: var(--gold);
 }
 
 .pc-orig {
-  font-size: 12px;
+  font-size: 10px;
   color: var(--text-faint);
   text-decoration: line-through;
 }
 
+/* ===== CARD BUTTONS ===== */
 .product-card-actions {
   display: flex;
-  gap: 6px;
+  gap: 5px;
+  margin-top: 2px;
 }
 
 .btn-card-buy {
   flex: 1;
-  padding: 8px;
+  padding: 7px 6px;
   background: var(--gold-gradient);
   color: var(--black);
   border: none;
-  border-radius: 20px;
-  font-size: clamp(10px, 1.5vw, 12px);
+  border-radius: 16px;
+  font-size: 10px;
   font-weight: 700;
   transition: var(--trans-fast);
   white-space: nowrap;
@@ -1488,12 +1517,12 @@ textarea {
 }
 
 .btn-card-cart {
-  padding: 8px 12px;
+  padding: 7px 9px;
   background: transparent;
   border: 1px solid var(--border-bright);
   color: var(--gold);
-  border-radius: 20px;
-  font-size: 12px;
+  border-radius: 16px;
+  font-size: 11px;
   transition: var(--trans-fast);
   flex-shrink: 0;
 }
@@ -3387,6 +3416,15 @@ textarea {
   }
 }
 
+/* --- Tablet 769–1100px: 3 cards visible --- */
+@media (max-width: 1100px) and (min-width: 769px) {
+  .products-grid .product-card {
+    flex: 0 0 calc(33.333% - 11px);
+    min-width: calc(33.333% - 11px);
+    max-width: calc(33.333% - 11px);
+  }
+}
+
 /* --- 768px: mobile nav, hide desktop search --- */
 @media (max-width: 768px) {
   .navbar-container {
@@ -3420,26 +3458,11 @@ textarea {
     height: 38px;
   }
 
-  /* FIX: products scroll horizontally on mobile like a shelf */
-  .products-grid {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 14px;
-    padding-bottom: 12px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .products-grid::-webkit-scrollbar {
-    display: none;
-  }
-
+  /* Mobile: 2 cards visible, swipe left/right */
   .products-grid .product-card {
-    min-width: clamp(200px, 60vw, 260px);
-    flex-shrink: 0;
-    scroll-snap-align: start;
+    flex: 0 0 calc(50% - 8px);
+    min-width: calc(50% - 8px);
+    max-width: calc(50% - 8px);
   }
 
   /* FIX: categories scroll horizontally on mobile */
@@ -3549,20 +3572,14 @@ textarea {
   }
 }
 
-/* --- 540px --- */
+/* --- 540px: small phones — 1.5 cards peek, user knows to swipe --- */
 @media (max-width: 540px) {
 
-  /* On very small screens, products grid becomes a proper 1-col grid again */
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
-    overflow-x: visible;
-    scroll-snap-type: none;
-  }
-
+  /* Show 1.5 cards so user sees the peek and knows to swipe */
   .products-grid .product-card {
-    min-width: unset;
-    flex-shrink: unset;
+    flex: 0 0 calc(65% - 8px);
+    min-width: calc(65% - 8px);
+    max-width: calc(65% - 8px);
   }
 
   .why-grid {
